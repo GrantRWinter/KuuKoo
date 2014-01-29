@@ -1,2 +1,26 @@
-<h1>Message#new</h1>
-<p>Find me in app/views/message/new.html.erb</p>
+<h2>New Message</h2>
+<%= form_for @message do |f| %>
+  <div>
+    <%= f.label "subject" %><br>
+    <%= f.text_field "subject" %>
+  </div>
+  <div>
+    <%= f.label "recipent" %><br>
+    <%= f.date_field "recipent" %>
+  </div>
+  <div>
+    <%= f.label "sender" %><br>
+    <%= f.text_field "sender" %>
+  </div>
+  <div>
+    <%= f.label "send_time" %><br>
+    <%= f.datetime "send_time" %>
+  </div>
+  <div>
+    <%= f.label "text" %><br>
+    <%= f.text_field "text" %>
+  </div>
+  <div>
+    <%= f.submit "Submit" %> 
+  </div>
+<% end %>
