@@ -11,23 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140128231245) do
+ActiveRecord::Schema.define(version: 20140129192842) do
 
   create_table "messages", force: true do |t|
+    t.integer  "user_id"
     t.string   "subject"
-    t.string   "sender"
-    t.string   "recipent"
+    t.string   "recipient"
+    t.string   "recipient_email"
+    t.integer  "recipient_phone_number"
+    t.datetime "send_time"
     t.string   "text"
-    t.datetime "time_sending"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
+
   create_table "users", force: true do |t|
-    t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "phone_number"
+    t.string   "email"
+    t.integer  "phone_number"
+    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

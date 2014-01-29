@@ -4,8 +4,6 @@ KuuKoo::Application.routes.draw do
     resources :messages, only: [:new, :create, :edit, :destroy]
   end
 
-  resources :messages
-
   root to: 'message#index'
   # get "message/index"
   # get "message/show"
