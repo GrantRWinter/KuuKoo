@@ -6,7 +6,6 @@ class UserController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
-    @message = Message.all
     @message = Message.where(user_id: params[:id])
   end
 
