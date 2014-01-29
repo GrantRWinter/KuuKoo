@@ -1,8 +1,10 @@
 class MessageController < ApplicationController
   def index
+  	@messages = Message.all
   end
 
   def show
+  	@message = Message.where(id: params[:user_id])
   end
 
   def new
@@ -10,5 +12,8 @@ class MessageController < ApplicationController
   end
 
   def edit
+  	@message = Message.new(message_params)
   end
+
+
 end
