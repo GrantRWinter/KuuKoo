@@ -1,12 +1,14 @@
 KuuKoo::Application.routes.draw do
-  get "message/index"
-  get "message/show"
-  get "message/new"
-  get "message/edit"
-  get "user/index"
-  get "user/show"
-  get "user/new"
-  get "user/edit"
+
+  resources :user
+  # get "message/index"
+  # get "message/show"
+  # get "message/new"
+  # get "message/edit"
+  # get "user/index"
+  # get "user/show"
+  # get "user/new"
+  # get "user/edit"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

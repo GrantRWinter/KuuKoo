@@ -1,2 +1,7 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<h1>User Profile</h1>
+<hr>
+<% @message.each do |message| %>
+  <h3><%= message.recipent %></h3>
+  <p><%= message.text %></p>
+  <hr>
+<% end %>
