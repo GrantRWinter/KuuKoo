@@ -4,7 +4,7 @@ class MessageController < ApplicationController
   end
 
   def show
-  	@message = Message.all(params[:user_id])
+  	@message = Message.all
   end
 
   def new
