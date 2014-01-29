@@ -8,12 +8,17 @@ class MessageController < ApplicationController
   end
 
   def new
-  	@message = Message.new
+  	@message = @user.messages.build
   end
 
   def edit
   	@message = Message.new(message_params)
   end
 
+  protected
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :id, :email, :phone_number, :password)
+  end
 
 end

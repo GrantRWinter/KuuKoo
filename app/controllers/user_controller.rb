@@ -1,6 +1,23 @@
 class UserController < ApplicationController
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to users_path, notice: "Welcomed and Logged in"
+    else
+      render :new
+    end
+  end
+
+
   def index
-  	@user = User.find(params[:id])
+  	@user = User
   	@message = Message.all
   end
 
@@ -9,25 +26,11 @@ class UserController < ApplicationController
     @message = Message.where(user_id: params[:id])
   end
 
-  def new
-  	@user = User.new
-  end
-
-  def create
-  	@user = User.new(user_params)
-
-  	if @user.save
-  		redirect_to user_path
-  	else
-  		render :new
-  	end
-  end
-
   protected
 
   def user_params
   	params.require(:user).permit(
-  		:first_name, :last_name, :phone_number, :email
+  		:first_name, :last_name, :phone_number, :email, :password
   		)
   end
 

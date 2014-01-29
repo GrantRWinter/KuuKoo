@@ -1,0 +1,28 @@
+<%= form_for @user do |f| %>
+
+ 	<%= render 'layouts/error_message' %> 
+
+	<div>
+		<%= f.label "first_name" %><br>
+		<%= f.text_field "first_name" %>
+	</div>
+	<div>
+	  <%= f.label "last_name" %><br>
+	  <%= f.text_field "last_name" %>
+	</div>
+	<div>
+	  <%= f.label "email" %><br>
+	  <%= f.email_field "email" %>
+	</div>
+	<div>
+	  <%= f.label "phone_number" %><br>
+	  <%= f.text_field "phone_number" %>
+	</div>
+	<div>
+	  <%= f.label "password" %><br>
+	  <%= password_field_tag "password" %>
+	</div>
+	<div>
+	  <%= f.submit "Submit" %> 
+	</div>
+<% end %>

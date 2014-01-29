@@ -2,11 +2,11 @@ KuuKoo::Application.routes.draw do
 
   get "sessions/new"
   get "sessions/create"
-  resources :user do
+  resources :users do
     resources :messages, only: [:new, :create, :edit, :destroy]
   end
 
-  root to: 'message#index'
+  root to: 'user#new'
   # get "message/index"
   # get "message/show"
   # get "message/new"
