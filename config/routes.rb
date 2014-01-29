@@ -1,5 +1,7 @@
 KuuKoo::Application.routes.draw do
 
+  get "sessions/new"
+  get "sessions/create"
   resources :user do
     resources :messages, only: [:new, :create, :edit, :destroy]
   end

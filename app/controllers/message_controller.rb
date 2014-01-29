@@ -4,7 +4,7 @@ class MessageController < ApplicationController
   end
 
   def show
-  	@message = Message.where(id: params[:user_id])
+  	@message = Message.all(params[:user_id])
   end
 
   def new
