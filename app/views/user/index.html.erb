@@ -4,8 +4,8 @@
 <% @message.each do |message| %>
   <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
   <h2><%= link_to message.subject, message_path(message) %></h2>
-  <h3><%= movie.send_time %></h3>
-  <h4>Dir. <%= movie.sender %></h4>
+  <h3><%= message.time_sending %></h3>
+  <h4>Dir. <%= message.sender %></h4>
   <p><%= movie.text %></p>
   <hr>
 <% end %>

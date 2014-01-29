@@ -1,7 +1,10 @@
-<h1>User Profile</h1>
+<h1>User Profile for <%= @user.first_name %> </h1>
 <hr>
 <% @message.each do |message| %>
-  <h3><%= message.recipent %></h3>
-  <p><%= message.text %></p>
+  <h3> Message Recipient: <%= message.recipent %></h3>
+  <h3> Subject: <%= message.subject %></h3>
+  <h2> Message sent by:  <%= message.sender %></h2>
+  <h2><%= message.time_sending %></h2>
+  <p> Message Text:  <%= message.text %></p>
   <hr>
 <% end %>
