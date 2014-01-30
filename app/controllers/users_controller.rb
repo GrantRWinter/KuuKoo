@@ -5,12 +5,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
     
-
+    @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to users_path(user), notice: "Welcomed and Logged in"
+      redirect_to user_path(@user), notice: "Welcomed and Logged in"
     else
       render :new
     end
@@ -25,6 +24,7 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
     @message = Message.where(user_id: params[:id])
+
   end
 
   protected
