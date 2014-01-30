@@ -13,10 +13,12 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message.user_id = current_user.id
+    
     @message = Message.new(message_params, user_params)
+    @message.user_id = current_user.id
     if @message.save
-      session[:user_id] = @user.id
+      
+      
       redirect_to user_messages_path(@user), notice: "Message Saved"
     else
       redirect_to user_messages_path(@user), notice: "Message Not! Saved"
