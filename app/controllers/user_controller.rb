@@ -17,7 +17,6 @@ class UserController < ApplicationController
 
 
   def index
-  	@user = User
   	@message = Message.all
   end
 
