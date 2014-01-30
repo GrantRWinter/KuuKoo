@@ -6,9 +6,11 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
 
     if user && user.authenticate(params[:password])
+      binding.pry
       session[:user_id] = user.id
-      redirect_to user_path
+      redirect_to user_path(user)
     else
+      flash.now[:alert] = "Log in failed..."
       render :new
     end
   end
