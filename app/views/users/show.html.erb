@@ -1,5 +1,8 @@
 <h1>User Profile for <%= @user.first_name %> </h1>
 <hr>
+<h1>hello</h1>
+
+<%= render custom_message @message %>
 
 <% @message.each do |message| %>
   <h3> Message Recipient: <%= message.recipient %></h3>
@@ -9,5 +12,7 @@
   <h2><%= message.user_id %></h2>
   <p> Message Text:  <%= message.text %></p>
   <hr>
+
+  
 <% end %>
 
