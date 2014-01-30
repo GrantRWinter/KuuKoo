@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
   def new
     @user = User.new
@@ -17,6 +17,7 @@ class UserController < ApplicationController
 
 
   def index
+  	@user = User.new
   	@message = Message.all
   end
 
