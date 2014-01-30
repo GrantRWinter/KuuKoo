@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129192842) do
+ActiveRecord::Schema.define(version: 20140130014956) do
 
   create_table "messages", force: true do |t|
     t.integer  "user_id"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140129192842) do
     t.string   "last_name"
     t.string   "email"
     t.integer  "phone_number"
-    t.string   "password"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
