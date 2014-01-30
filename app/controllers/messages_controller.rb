@@ -15,6 +15,10 @@ class MessagesController < ApplicationController
   	@message = Message.new(message_params)
   end
 
+  def create
+    
+  end
+
   protected
 
   def user_params

@@ -23,8 +23,11 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
-    @message = Message.where(user_id: params[:id])
+    @message = Message.new
+  end
 
+  def custom_message
+    @message = Message.all
   end
 
   protected

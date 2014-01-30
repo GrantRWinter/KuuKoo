@@ -2,17 +2,23 @@
 <hr>
 <h1>hello</h1>
 
-<%= render custom_message @message %>
+<%= form_for @message, url: user_messages_path(@user) do |f| %>
+      
+    <%= f.label "recipient" %>
+    <%= f.text_field "recipient" %>
+    <%= f.submit "Submit" %> 
 
-<% @message.each do |message| %>
+<% end %>
+
+
+<% @user.messages.each do |message| %>
   <h3> Message Recipient: <%= message.recipient %></h3>
   <h3> Subject: <%= message.subject %></h3>
   <h2> Message sent by:  <%= message.subject %></h2>
   <h2><%= message.send_time %></h2>
-  <h2><%= message.user_id %></h2>
-  <p> Message Text:  <%= message.text %></p>
+  <h2><%= message.user_id %></h2
+>  <p> Message Text:  <%= message.text %></p>
   <hr>
 
   
 <% end %>
-
