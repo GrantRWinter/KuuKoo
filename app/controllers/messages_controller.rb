@@ -15,8 +15,8 @@ class MessagesController < ApplicationController
     @user = User.find(session[:user_id])
     @message = @user.messages.build(message_params)
     @message.user_id = current_user.id
-    @message = Message.new(message_params)
-   
+    
+    
     if @message.save
       session[:user_id] = @user.id
       redirect_to @user, notice: "Message Saved"
@@ -27,7 +27,16 @@ class MessagesController < ApplicationController
   end
 
   def edit
-    @message = Message.new(message_params)
+    @message = Message.find(params[:id])
+  end
+
+  def update
+    @message = Message.find(params[:id])
+    if @message.update_attributes(message_params)
+      redirect_to user_path(current_user)
+    else
+      render :edit
+    end
   end
 
   protected

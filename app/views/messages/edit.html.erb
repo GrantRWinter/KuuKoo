@@ -1,2 +1,34 @@
 <h1>Message#edit</h1>
 <p>Find me in app/views/message/edit.html.erb</p>
+
+<%= form_for @message, url: user_message_path(current_user, @message) do |f| %>
+      
+  <div>    
+    <%= f.label "recipient" %><br>
+    <%= f.text_field "recipient" %>
+  </div>
+   <div>
+    <%= f.label "recipient_email" %><br>
+    <%= f.text_field "recipient_email" %>
+  </div>
+  <div>
+    <%= f.label "subject" %><br>
+    <%= f.text_field "subject" %>
+  </div>
+  <div>
+    <%= f.label "recipient_phone_number" %><br>
+    <%= f.telephone_field "recipient_phone_number" %>
+  </div>
+  <div>
+    <%= f.label "send_time" %><br>
+    <%= f.date_field "send_time" %>
+  </div>
+  <div>
+    <%= f.label "text" %><br>
+    <%= f.text_area "text" %>
+  </div>
+
+  <div>
+    <%= f.submit "Submit" %> 
+  </div>
+<% end %>

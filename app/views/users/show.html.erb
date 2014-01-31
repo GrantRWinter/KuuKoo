@@ -30,23 +30,19 @@
   </div>
 
   <div>
-    <%= f.label "user_id" %><br>
-    <%= f.text_area "user_id" %>
-  </div>
-
-  <div>
     <%= f.submit "Submit" %> 
   </div>
 <% end %>
 
 
 <% @user.messages.each do |message| %>
+<%= link_to "edit", edit_user_message_path(current_user, message)%><h3>
   <h3> Message Recipient: <%= message.recipient %></h3>
   <h3> Subject: <%= message.subject %></h3>
   <h2> Message sent by:  <%= message.subject %></h2>
   <h2><%= message.send_time %></h2>
-  <h2><%= message.user_id %></h2
->  <p> Message Text:  <%= message.text %></p>
+  <h2><%= message.user_id %></h2>
+  <p> Message Text:  <%= message.text %></p>
   <hr>
 
   
