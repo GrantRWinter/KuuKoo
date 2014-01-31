@@ -3,6 +3,7 @@
 <h1>hello</h1>
 
 <%= form_for @message, url: user_messages_path(@user) do |f| %>
+
       
 	<div>    
     <%= f.label "recipient" %><br>
@@ -36,7 +37,8 @@
 
 
 <% @user.messages.each do |message| %>
-<%= link_to "edit", edit_user_message_path(current_user, message)%><h3>
+<h1><%= link_to "edit", edit_user_message_path(current_user, message)%>  <%= link_to "delete", user_message_path(current_user, message), method: :delete, confirm: "Are you sure you want to delete this message?" %></h1>
+
   <h3> Message Recipient: <%= message.recipient %></h3>
   <h3> Subject: <%= message.subject %></h3>
   <h2> Message sent by:  <%= message.subject %></h2>
