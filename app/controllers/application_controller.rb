@@ -19,6 +19,11 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  def current_message
+    @current_message || Message.find(session[:id]) if session[:id]
+  end
+
+  helper_method :current_message
   
 end
 

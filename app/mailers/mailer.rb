@@ -7,6 +7,9 @@ class Mailer < ActionMailer::Base
     mail(to: @user.email, subject: "Welcome to my Awesome Site")
   end
 
+  def spoof_email(current_user)
+  	@user = current_user
+  	@message = current_message
+  	mail(to: @recipient_email, subject: @subject)
+  end
 end
-
-  
