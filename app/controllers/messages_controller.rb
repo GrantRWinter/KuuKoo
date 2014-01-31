@@ -14,9 +14,7 @@ class MessagesController < ApplicationController
   def create
     @user = User.find(session[:user_id])
     @message = @user.messages.build(message_params)
-    @message.user_id = current_user.id
-    @message = Message.new(message_params)
-   
+  
     if @message.save
       session[:user_id] = @user.id
       redirect_to @user, notice: "Message Saved"
