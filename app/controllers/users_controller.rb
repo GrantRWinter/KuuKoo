@@ -7,11 +7,19 @@ class UsersController < ApplicationController
   def create
     
     @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to user_path(@user), notice: "Welcomed and Logged in"
-    else
-      render :new
+    respond_to do |format|
+      if @user.save
+        session[:user_id] = @user.id
+        # redirect_to user_path(@user), notice: "Welcomed and Logged in"
+
+
+        Mailer.welcome_email(@user).deliver
+
+        format.html {redirect_to user_path(@user), notice: "Welcomed and Logged in"}
+        
+      else
+        render :new
+      end
     end
   end
 
