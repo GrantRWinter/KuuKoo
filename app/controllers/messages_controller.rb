@@ -15,8 +15,7 @@ class MessagesController < ApplicationController
     @user = User.find(session[:user_id])
     @message = @user.messages.build(message_params)
     @message.user_id = current_user.id
-    
-    
+
     if @message.save
       session[:user_id] = @user.id
       redirect_to @user, notice: "Message Saved"
