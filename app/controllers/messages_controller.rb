@@ -21,7 +21,7 @@ class MessagesController < ApplicationController
       if @message.save
         session[:user_id] = @user.id
 
-        Mailer.spoof_email(@message).deliver
+        Mailer.spoof_email(@message, @user).deliver
         format.html {redirect_to user_path@user, notice: "Message Saved"}
       else
         redirect_to @user, notice: "Message Not! Saved"
