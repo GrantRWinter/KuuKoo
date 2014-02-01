@@ -14,19 +14,21 @@ class MessagesController < ApplicationController
 
   def create
     @user = User.find(session[:user_id])
-    @message = @user.messages.build(message_params)
+    @message = @user.messages.create(message_params)
     @message.user_id = current_user.id
 
-    respond_to do |format|
+
       if @message.save
         session[:user_id] = @user.id
 
         Mailer.spoof_email(@message, @user).deliver
         format.html {redirect_to user_path@user, notice: "Message Saved"}
       else
-        redirect_to @user, notice: "Message Not! Saved"
+        #redirect_to @user, notice: "Message Not! Saved"
+        render 'users/show'
       end
-    end
+    
+
   end
 
   def edit

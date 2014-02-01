@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     
     @user = User.new(user_params)
     
-    respond_to do |format|
+    
       if @user.save
         session[:user_id] = @user.id
         # redirect_to user_path(@user), notice: "Welcomed and Logged in"
@@ -21,7 +21,9 @@ class UsersController < ApplicationController
       else
         render :new
       end
-    end
+    
+    
+  
   end
 
 
