@@ -22,7 +22,9 @@ class MessagesController < ApplicationController
         session[:user_id] = @user.id
 
         Mailer.spoof_email(@message, @user).deliver
-        format.html {redirect_to user_path@user, notice: "Message Saved"}
+        respond_to do |format|
+          format.html {redirect_to user_path(@user), notice: "Message Saved"}
+        end
       else
         #redirect_to @user, notice: "Message Not! Saved"
         render 'users/show'

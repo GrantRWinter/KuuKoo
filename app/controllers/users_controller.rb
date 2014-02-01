@@ -7,29 +7,34 @@ class UsersController < ApplicationController
   def create
     
     @user = User.new(user_params)
-    
-    
       if @user.save
         session[:user_id] = @user.id
-        # redirect_to user_path(@user), notice: "Welcomed and Logged in"
-
-
+        
         Mailer.welcome_email(@user).deliver
 
-        format.html {redirect_to user_path(@user), notice: "Welcomed and Logged in"}
-        
+        respond_to do |format|
+          format.html {
+            redirect_to user_path(@user), notice: "Welcomed and Logged in"
+          }
+        end
       else
         render :new
       end
     
-    
-  
   end
-
 
   def index
   	@user = User.new
   	@message = Message.all
+    respond_to do |format|
+      format.js {
+        render 'showjs'
+      }
+      format.html {
+        render 'index'
+      }
+    end
+
   end
 
   def show
