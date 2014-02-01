@@ -1,4 +1,6 @@
 class Mailer < ActionMailer::Base
+	add_template_helper(ApplicationHelper)	
+
   default from: "default@gmail.com"
 
   def welcome_email(current_user)
@@ -7,9 +9,8 @@ class Mailer < ActionMailer::Base
     mail(to: @user.email, subject: "Welcome to my Awesome Site")
   end
 
-  def spoof_email(current_user)
-  	@user = current_user
+  def spoof_email(current_message)
   	@message = current_message
-  	mail(to: @recipient_email, subject: @subject)
+  	mail(to: @message.recipient_email, subject: @message.subject)
   end
 end

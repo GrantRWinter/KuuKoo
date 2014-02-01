@@ -12,7 +12,6 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-
 # http://stackoverflow.com/questions/9381817/devise-sign-up-form-on-the-home-page-as-well
 
 end
