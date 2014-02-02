@@ -1,6 +1,8 @@
-<h1>Hello and welcome to Kuu</h1>
+<h1>Hello and welcome to Kuukoo</h1>
 <hr>
 <h1>User Profile for <%= @user.first_name %> </h1>
+
+<h3>Enter your user details and the message you want to send</h3>
 
 <%= form_for @message, url: user_messages_path(@user) do |f| %>
 
@@ -9,46 +11,50 @@
       <%= pluralize(@message.errors.count, "error") %> prevented this message from being sent:
       <ul>
         <% @message.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <li class="error_message"><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
+  <div class="row"> 
+    <div class="form span6 offset1">
+    	<div>    
+        <%= f.label "recipient" %><br>
+        <%= f.text_field "recipient" %>
+      </div>
+       <div>
+        <%= f.label "recipient_email" %><br>
+        <%= f.text_field "recipient_email" %>
+      </div>
+      <div>
+        <%= f.label "subject" %><br>
+        <%= f.text_field "subject" %>
+      </div>
+      <div>
+        <%= f.label "recipient_phone_number" %><br>
+        <%= f.telephone_field "recipient_phone_number" %>
+      </div>
+      <div>
+        <%= f.label "send_time" %><br>
+        <%= f.date_field "send_time" %>
+      </div>
+      <div>
+        <%= f.label "text" %><br>
+        <%= f.text_area "text" %>
+      </div>
+      <div>
+        <%= f.submit "Submit", class: "btn btn-success dropdown-toggle btn-large" %> 
+      </div>
+    <% end %>
+    </div>
+    <div class="span6">
+      <h3> <%= @user.first_name %>, you have sent <%= @user.messages.count%> messages using Kuukoo </h3>
 
-	<div>    
-    <%= f.label "recipient" %><br>
-    <%= f.text_field "recipient" %>
+     
+      <%= render 'users/list_of_messages' %>
+    </div>
+    
   </div>
-   <div>
-    <%= f.label "recipient_email" %><br>
-    <%= f.text_field "recipient_email" %>
-  </div>
-  <div>
-    <%= f.label "subject" %><br>
-    <%= f.text_field "subject" %>
-  </div>
-  <div>
-    <%= f.label "recipient_phone_number" %><br>
-    <%= f.telephone_field "recipient_phone_number" %>
-  </div>
-  <div>
-    <%= f.label "send_time" %><br>
-    <%= f.date_field "send_time" %>
-  </div>
-  <div>
-    <%= f.label "text" %><br>
-    <%= f.text_area "text" %>
-  </div>
-
-  <div>
-    <%= f.submit "Submit" %> 
-  </div>
-<% end %>
-
 <hr>
 
-<h3> <%= @user.first_name %>, you have sent <%= @user.messages.count%> messages using Kuu </h3>
 
-<br>
-
-<%= render 'users/list_of_messages' %>

@@ -3,7 +3,7 @@
       <%= pluralize(@user.errors.count, "error") %> prevented this user from being created:
       <ul>
         <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <li class="error_message"><%= msg %></li>
         <% end %>
       </ul>
     </div>
