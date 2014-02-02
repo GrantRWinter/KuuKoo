@@ -1,0 +1,10 @@
+<% @user.messages.each do |message| %>
+  <h2> Sent at:  <%= message.send_time %></h2>  
+  <h2> Subject: <%= message.subject %></h2>
+  <h3> Sent to: <%= message.recipient %></h3>
+  <h3> Message sent by:  me (<%= @user.first_name %>) </h3>
+  <p> Message Text:  <%= message.text %></p>
+  <hr>
+
+  
+<% end %>
