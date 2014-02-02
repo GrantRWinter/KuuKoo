@@ -1,7 +1,7 @@
 KuuKoo::Application.routes.draw do
 
   resources :users do
-    resources :messages, only: [:new, :create, :edit, :update, :destroy]
+    resources :messages, only: [:new, :create, :edit, :update, :destroy, :show]
   end
 
   resources :sessions, only: [:new, :create, :destroy]
