@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
 
         Mailer.spoof_email(@message, @user).deliver
         respond_to do |format|
-          format.html {redirect_to user_path(@user), notice: "Message Saved"}
+          format.html {redirect_to user_path(@user), notice: "Message Saved and Sent"}
         end
       else
         #redirect_to @user, notice: "Message Not! Saved"
@@ -35,6 +35,14 @@ class MessagesController < ApplicationController
 
   def edit
     @message = Message.find(params[:id])
+
+    # def time_zone
+    #   if message.send_time < Time.now
+    #     link_to "edit", edit_user_message_path(current_user, message)
+    #   end
+    # end
+
+
   end
 
   def update

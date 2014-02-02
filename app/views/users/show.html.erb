@@ -48,13 +48,10 @@
     <% end %>
     </div>
     <div class="span6">
-      <h3> <%= @user.first_name %>, you have sent <%= @user.messages.count%> messages using Kuukoo </h3>
-
+      <h3> <%= @user.first_name %>, you have sent <%= @user.messages.count%> messages using Kuu </h3>
      
-      <%= render 'users/list_of_messages' %>
+      
     </div>
-    
-  </div>
-<hr>
 
+<%= render 'messages/list_of_messages' %>
 
