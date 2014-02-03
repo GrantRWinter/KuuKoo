@@ -35,8 +35,12 @@
         <%= f.telephone_field "recipient_phone_number" %>
       </div>
       <div>
+        <p> The current time is: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %> </p>
+        <br>
+        <p> - </p>
+        <p> The current UTC time is: <%= Time.now.utc.strftime("%Y-%m-%d %H:%M:%S") %> </p>
         <%= f.label "send_time" %><br>
-        <%= f.date_field "send_time" %>
+        <%= f.datetime_select "send_time" %>
       </div>
       <div>
         <%= f.label "text" %><br>
