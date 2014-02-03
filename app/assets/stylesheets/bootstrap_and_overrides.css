@@ -6,8 +6,9 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
-  .header {
+  header {
     font-size: 4em;
+    background-color: #c1c7e9;
   }
 
   .user_form{
