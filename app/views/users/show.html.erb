@@ -34,21 +34,19 @@
         <div>
           <%= f.label "recipient_phone_number" %><br>
           <%= f.telephone_field "recipient_phone_number" %>
-                  <br>
-          
-          <div id="current_time">
-            <p> The current time is: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %> </p>
-          </div>
-          <br>
-        </div>
-        
-        <div>
-          <%= f.label "send_time" %><br>
-          <%= f.datetime_select "send_time" %>
         </div>
         <div>
           <%= f.label "text" %><br>
           <%= f.text_area "text" %>
+        </div>
+        <br>       
+          <div id="current_time">
+            <p> The current time is: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %> </p>
+          </div>
+        <br>
+        <div>
+          <%= f.label "send_time" %><br>
+          <%= f.datetime_select "send_time" %>
         </div>
         <div>
           <%= f.submit "Submit", class: "btn btn-success dropdown-toggle btn-large" %> 
