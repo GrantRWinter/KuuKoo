@@ -4,7 +4,7 @@ class Mailer < ActionMailer::Base
 
   def welcome_email(current_user)
     @user = current_user
-    @url = "http://www.google.com"
+    @url = "http://www.Kuu.com/doesn't_exist"
     mail(to: @user.email, subject: "Welcome to Kuu")
   end
 

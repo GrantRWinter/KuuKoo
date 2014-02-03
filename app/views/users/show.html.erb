@@ -1,6 +1,6 @@
 <h1>Hello and welcome to Kuu</h1>
 <hr>
-<h1>User Profile for <%= @user.first_name %> </h1>
+<h2>User Profile for <%= @user.first_name %> </h2>
 
 <h3>Enter your user details and the message you want to send</h3>
 
@@ -37,8 +37,6 @@
       <div>
         <p> The current time is: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %> </p>
         <br>
-        <p> - </p>
-        <p> The current UTC time is: <%= Time.now.utc.strftime("%Y-%m-%d %H:%M:%S") %> </p>
         <%= f.label "send_time" %><br>
         <%= f.datetime_select "send_time" %>
       </div>
