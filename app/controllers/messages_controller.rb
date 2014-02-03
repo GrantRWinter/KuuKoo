@@ -1,4 +1,11 @@
 class MessagesController < ApplicationController
+ 
+  # def deliver
+  #   Delayed::Job.enqueue(MailingJob.new(params[:id]), 0, 6.minutes.from_now)
+  #   flash[:notice] = "Mailing waiting to be delivered."
+  #   redirect_to user_path(@user)
+  # end
+
 
   def index
   	@messages = Message.all
@@ -14,6 +21,7 @@ class MessagesController < ApplicationController
 
   def create
     @user = User.find(session[:user_id])
+
     @message = @user.messages.create(message_params)
     @message.user_id = current_user.id
 
@@ -21,7 +29,9 @@ class MessagesController < ApplicationController
       if @message.save
         session[:user_id] = @user.id
 
-        Mailer.spoof_email(@message, @user).deliver
+        Mailer.delay(run_at: 5.minutes.from_now).spoof_email(@message, @user)
+
+
         respond_to do |format|
           format.html {redirect_to user_path(@user), notice: "Message Saved and Sent"}
         end
