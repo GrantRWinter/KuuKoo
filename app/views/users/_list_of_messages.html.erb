@@ -11,7 +11,7 @@
   <h2> Subject: <%= message.subject %></h2>
   <h3> Sent to: <%= message.recipient %></h3>
   <h3> Message sent by:  me (<%= @user.first_name %>) </h3>
->>>>>>> 4199e5a239e7450508131028d13b0f24ddfc8985
+
   <p> Message Text:  <%= message.text %></p>
   <h1><%= link_to "edit", edit_user_message_path(current_user, message)%>  <%= link_to "delete", user_message_path(current_user, message), method: :delete, confirm: "Are you sure you want to delete this message?" %></h1>
   <hr>
