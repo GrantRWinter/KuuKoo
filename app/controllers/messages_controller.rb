@@ -14,38 +14,26 @@ class MessagesController < ApplicationController
 
   def create
     @user = User.find(session[:user_id])
-
     @message = @user.messages.create(message_params)
     @message.user_id = current_user.id
 
+    if @message.save
+      session[:user_id] = @user.id
+      Mailer.delay(run_at: @message.send_time).spoof_email(@message, @user)
 
-      if @message.save
-        session[:user_id] = @user.id
-
-        Mailer.delay(run_at: @message.send_time).spoof_email(@message, @user)
-
-
-        respond_to do |format|
-          format.html {redirect_to user_path(@user), notice: "Message Saved and Sent"}
-        end
+      respond_to do |format|
+        format.html {redirect_to user_path(@user), notice: "Message Saved and Sent"}
+      end
       else
         #redirect_to @user, notice: "Message Not! Saved"
         render 'users/show'
-      end
+    end
     
-
   end
+
 
   def edit
     @message = Message.find(params[:id])
-
-    # def time_zone
-    #   if message.send_time < Time.now
-    #     link_to "edit", edit_user_message_path(current_user, message)
-    #   end
-    # end
-
-
   end
 
   def update
