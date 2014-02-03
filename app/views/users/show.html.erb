@@ -34,10 +34,15 @@
         <div>
           <%= f.label "recipient_phone_number" %><br>
           <%= f.telephone_field "recipient_phone_number" %>
-        </div>
-        <div>
-          <p> The current time is: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %> </p>
+                  <br>
+          
+          <div id="current_time">
+            <p> The current time is: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %> </p>
+          </div>
           <br>
+        </div>
+        
+        <div>
           <%= f.label "send_time" %><br>
           <%= f.datetime_select "send_time" %>
         </div>
@@ -52,7 +57,9 @@
       </div>
       <div class="span5 list">
 
-        <% if @user.messages.count == 1 %>
+        <% if @user.messages.count == 0 %>
+          <h3>you have not yet sent any messages using Kuu </h3>
+        <% elsif @user.messages.count == 1 %>
           <h3>you have sent a single message using Kuu </h3>
           <% else %>
           <h3>you have sent <%= @user.messages.count%> messages using <div id="Kuu">Kuu </div></h3>
