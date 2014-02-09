@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 
 gem "twitter-bootstrap-rails", "~> 2.2.8"
 # Use SCSS for stylesheets
@@ -52,3 +52,5 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 # gem 'debugger', group: [:development, :test]
 
 gem 'delayed_job_active_record'
+
+gem 'rails_12factor', group: :production
